@@ -1,3 +1,4 @@
+<?php include("connect.php") ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -147,14 +148,16 @@
           <div class="landing-page-cards-container">
             
       <?php
-        $excursion_id=$_GET['ExcursionID'];
-        $result_excursion = "SELECT * FROM Excursion WHERE ExcursionID='$excursion_id' ";
-        $result = $db->query($result_excursion);
-        var_dump($result);
-        // if($result->num_rows>0){
-        // while($data = $result->fetch_array()) {
+        //$excursion_id=$_GET['ExcursionID']; 
+        //fetching result using select statement and limiting the result to show 6 rows to the user
+        $result_excursion = "SELECT * FROM Excursion LIMIT 6";
+        $result = $conn->query($result_excursion);
 
-        ?>
+        if ($result->num_rows > 0) {
+          // output data of each row
+          while($row = $result->fetch_assoc()) {
+            
+          ?>
 
             <div class="place-card-container">
               <img
@@ -163,12 +166,16 @@
                 class="place-card-image"
               >
               <div class="place-card-container1">
-                <span class="place-card-text"><span>Bali Beach</span></span>
+                <span class="place-card-text"><span><?php echo $row['ExcursionName']?></span></span>
                 <span class="place-card-text1">
                   <span>
-                   Bali is a province of Indonesia and the westernmost of the Lesser Sunda Islands. East of Java and west of Lombok, the province includes the island of Bali and a few smaller neighbouring islands, notably Nusa Penida, Nusa Lembongan, and Nusa Ceningan.
+                  <?php echo $row['Description']?>
                   </span>
                 </span>
+                <div class="align-item">
+                  <h5><?php echo $row['Location']?></h5>
+                  <h5>£<?php echo $row['Price']?></h5>
+                </div>
                 <div class="outline-button-container">
                   <button class="outline-button-button button">
                    Discover place
@@ -176,15 +183,18 @@
                 </div>
               </div>
             </div>
-<?php 
-      //   }
-        
 
-      // // } else{
-      // //   var_dump("<h1> No record found </h1>"); 
-      // }
-      ?>
+            <?php 
 
+          }
+          } else {
+            echo "0 results";
+          }
+          $conn->close();
+
+          ?>
+
+<!-- 
             <div class="place-card-container">
               <img
                 alt="image"
@@ -284,7 +294,7 @@
                   </button>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="landing-page-footer">

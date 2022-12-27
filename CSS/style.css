@@ -85,3 +85,13 @@
   text-transform: none;
   text-decoration: none;
 }
+
+.align-item{
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1em;
+  color: #593E1D;
+  /* background-color: red; */
+  /* justify-items: end; */
+}
