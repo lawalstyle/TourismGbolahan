@@ -3,7 +3,7 @@
 <?php
 //change to safe character set
 mysqli_query($conn,'SET NAMES utf8mb4');
-
+$error = "";
 //grab the posted username and password
 $post_username = $_POST['Username'];
 $post_password = $_POST['Password'];

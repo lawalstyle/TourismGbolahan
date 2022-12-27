@@ -36,11 +36,13 @@ error_reporting(E_ALL);
 
         <div class="forms-container">
             <div class="signin-signup">
-                <form action="login_user.php" method = "post" class="sign-in-form">
+                <form method = "post" class="sign-in-form" action="login_user.php">
                     <h2 class="title">Sign in</h2>
+                
                     <div class="input-field">
                         <i class="fas fa-user"></i>
                         <input type="text" placeholder="Username" id = "Username" name="Username">
+                        <?php echo $error ?>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>

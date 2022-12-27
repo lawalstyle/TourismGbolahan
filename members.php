@@ -37,7 +37,7 @@ else {
                <a href = "index.php"><span class="landing-page-text">Home</span></a>
                <!-- <a href = "about.php"> <span class="landing-page-text01">About</span></a> -->
                <!-- <a href = "Contactus.php"><span class="landing-page-text02">Contact Us</span></a> -->
-               <a href = "#"><span class="landing-page-text03">Bookings</span></a>
+               <a href = "#main-section"><span class="landing-page-text03">Bookings</span></a>
                 <a href = "#"><span class="landing-page-text03">Profile</span></a>
               </div>
               <a href="#main-section" class="landing-page-link">
@@ -81,8 +81,8 @@ else {
                 <div class="landing-page-right-side1">
                   <div class="landing-page-links-container1">
                     <span class="landing-page-text04">Home</span>
-                    <span class="landing-page-text05">About</span>
-                    <span class="landing-page-text06">Wireframe</span>
+                    <span class="landing-page-text05">Booking</span>
+                    <span class="landing-page-text06">Profile</span>
                     <span>Contact</span>
                   </div>
                  
@@ -157,22 +157,38 @@ else {
           </div>
         </div>
         <div id="main-section" class="landing-page-main">
-          <h1>Most Famous Tourism Sites</h1>
-          <span class="landing-page-text15">Recommended</span>
+          <h1>Booked Tourism Center</h1>
+          <!-- <span class="landing-page-text15">Recommended</span> -->
           <div class="landing-page-cards-container">
+          <?php
+        //$excursion_id=$_GET['ExcursionID']; 
+        //fetching result using select statement and limiting the result to show 6 rows to the user
+        $result_excursion = "SELECT * FROM Booking";
+        $result = $conn->query($result_excursion);
+
+        if ($result->num_rows > 0) {
+          // output data of each row
+          while($row = $result->fetch_assoc()) {
+            
+          ?>
+
             <div class="place-card-container">
               <img
                 alt="image"
                 src="images/bali.jpg"
                 class="place-card-image"
               >
-              <div class="place-card-container1">
-                <span class="place-card-text"><span>Bali Beach</span></span>
+              <div class="place-card-container1" style="text-align:justify">
+                <span class="place-card-text"><span><?php echo $row['ExcursionName']?></span></span>
                 <span class="place-card-text1">
                   <span>
-                   Bali is a province of Indonesia and the westernmost of the Lesser Sunda Islands. East of Java and west of Lombok, the province includes the island of Bali and a few smaller neighbouring islands, notably Nusa Penida, Nusa Lembongan, and Nusa Ceningan.
+                  <?php echo $row['Description']?>
                   </span>
                 </span>
+                <div class="align-item">
+                  <h5><?php echo $row['Location']?></h5>
+                  <h5>£<?php echo $row['Price']?></h5>
+                </div>
                 <div class="outline-button-container">
                   <button class="outline-button-button button">
                    Discover place
@@ -180,7 +196,21 @@ else {
                 </div>
               </div>
             </div>
-            <div class="place-card-container">
+
+            <?php 
+
+          }
+          } else {
+            echo "<h3 class='book-color'>You have no booking, please keep exploring </h3>";
+          }
+          $conn->close();
+
+          ?>
+
+           
+           
+           
+            <!-- <div class="place-card-container">
               <img
                 alt="image"
                 src="images/mountain.jpg"
@@ -279,8 +309,11 @@ else {
                   </button>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
+        
+        
+        
         </div>
         <div class="landing-page-footer">
           <div class="landing-page-menu">

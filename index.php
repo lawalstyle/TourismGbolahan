@@ -165,7 +165,7 @@
                 src="images/bali.jpg"
                 class="place-card-image"
               >
-              <div class="place-card-container1">
+              <div class="place-card-container1" style="text-align:justify">
                 <span class="place-card-text"><span><?php echo $row['ExcursionName']?></span></span>
                 <span class="place-card-text1">
                   <span>
@@ -178,7 +178,7 @@
                 </div>
                 <div class="outline-button-container">
                   <button class="outline-button-button button">
-                   Discover place
+                   Book place
                   </button>
                 </div>
               </div>
@@ -193,6 +193,8 @@
           $conn->close();
 
           ?>
+
+
 
 <!-- 
             <div class="place-card-container">

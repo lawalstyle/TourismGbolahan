@@ -95,3 +95,12 @@
   /* background-color: red; */
   /* justify-items: end; */
 }
+
+.outline-button-button:hover{
+  background-color: gray;
+  color: var(--dl-color-gray-white);
+}
+
+.book-color{
+  color: red;
+}
