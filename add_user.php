@@ -64,12 +64,12 @@ else {
 	    else
 	    {
 	    	//username was unique, prepare statement for inserting user
-			if (!($stmt = mysqli_prepare($conn, "INSERT INTO Customers (`Username`, `Password`) VALUES ((?), (?))"))) {
+			if (!($stmt = mysqli_prepare($conn, "INSERT INTO Customers (`Username`, `Password`, `Fullname`, `Email`, `DOB`) VALUES ((?), (?), (?), (?), (?))"))) {
 		    echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
 			}
 
 			//binding statement
-			if (!$stmt->bind_param('ss', $post_username, $hashed_post_password)) {
+			if (!$stmt->bind_param('sssss', $post_username, $hashed_post_password, $post_fullname,$post_email,$post_dob)) {
 			    echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
 			}
 

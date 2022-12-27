@@ -1,8 +1,8 @@
 <?php
 //credentials for connecting to your database
 $host = 'localhost'; //database host
-$user = 'root'; //database username
-$pass = NULL; //database password
+$user = 'devbanji'; //database username
+$pass = ""; //database password
 $dbname = 'WebAssignment'; //database name
 
 // Create connection
@@ -13,7 +13,7 @@ if (strnatcmp(phpversion(),'5.3.7') >= 0)
 {
 	 // Check connection
 	if (mysqli_connect_errno()) {
-	    printf("Connect failed: ", mysqli_connect_error());
+	    echo("Connect failed: " .  mysqli_connect_error());
 	    die();
 	}
 }

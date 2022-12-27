@@ -35,9 +35,10 @@ else {
             <div class="landing-page-right-side">
               <div class="landing-page-links-container">
                <a href = "index.php"><span class="landing-page-text">Home</span></a>
-               <a href = "about.php"> <span class="landing-page-text01">About</span></a>
-               <a href = "Contactus.php"><span class="landing-page-text02">Contact Us</span></a>
-                <a href = "#"><span class="landing-page-text03">Bookings</span></a>
+               <!-- <a href = "about.php"> <span class="landing-page-text01">About</span></a> -->
+               <!-- <a href = "Contactus.php"><span class="landing-page-text02">Contact Us</span></a> -->
+               <a href = "#"><span class="landing-page-text03">Bookings</span></a>
+                <a href = "#"><span class="landing-page-text03">Profile</span></a>
               </div>
               <a href="#main-section" class="landing-page-link">
               <div class="solid-button-container">

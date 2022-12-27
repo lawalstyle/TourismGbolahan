@@ -1,5 +1,5 @@
-<?php @include('connect.php') ?>
-<?php @include('session.php'); ?>
+<?php include('connect.php') ?>
+<?php include('session.php'); ?>
 <?php
 //change to safe character set
 mysqli_query($conn,'SET NAMES utf8mb4');
