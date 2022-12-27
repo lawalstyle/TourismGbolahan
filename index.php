@@ -145,6 +145,17 @@
           <h1>Most Famous Tourism Sites</h1>
           <span class="landing-page-text15">Recommended</span>
           <div class="landing-page-cards-container">
+            
+      <?php
+        $excursion_id=$_GET['ExcursionID'];
+        $result_excursion = "SELECT * FROM Excursion WHERE ExcursionID='$excursion_id' ";
+        $result = $db->query($result_excursion);
+        var_dump($result);
+        // if($result->num_rows>0){
+        // while($data = $result->fetch_array()) {
+
+        ?>
+
             <div class="place-card-container">
               <img
                 alt="image"
@@ -165,6 +176,15 @@
                 </div>
               </div>
             </div>
+<?php 
+      //   }
+        
+
+      // // } else{
+      // //   var_dump("<h1> No record found </h1>"); 
+      // }
+      ?>
+
             <div class="place-card-container">
               <img
                 alt="image"

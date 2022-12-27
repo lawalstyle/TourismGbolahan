@@ -23,7 +23,14 @@ error_reporting(E_ALL);
     
 </head>
 <body>
-<a href = "index.php"> LawalStyle</a> 
+<a href="#main-section" class="landing-page-link">
+                <div class="solid-button-container">
+                  <button class="solid-button-button button">
+                    <a href = "login.php"><span>Back to Login page</span></a>
+                  </button>
+                   
+                </div>
+              </a>
 <div class="container">
 
         <div class="forms-container">
