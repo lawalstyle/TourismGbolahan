@@ -34,11 +34,11 @@ else {
 ?>
             <div class="landing-page-right-side">
               <div class="landing-page-links-container">
-               <a href = "index.php"><span class="landing-page-text">Home</span></a>
+               <a href = "explore.php"><span class="landing-page-text">Explore</span></a>
                <!-- <a href = "about.php"> <span class="landing-page-text01">About</span></a> -->
                <!-- <a href = "Contactus.php"><span class="landing-page-text02">Contact Us</span></a> -->
-               <a href = "#main-section"><span class="landing-page-text03">Bookings</span></a>
-                <a href = "#"><span class="landing-page-text03">Profile</span></a>
+               <a href = "member.php"><span class="landing-page-text03">Bookings</span></a>
+                <a href = "profile.php"><span class="landing-page-text03">Profile</span></a>
               </div>
               <a href="#main-section" class="landing-page-link">
               <div class="solid-button-container">
@@ -150,7 +150,7 @@ else {
               </span>
               <div class="solid-button-container">
                 <button class="solid-button-button button">
-                  <span>Explore Places</span>
+                <span><a href="explore.php">Explore Places</a></span>
                 </button>
               </div>
             </div>

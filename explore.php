@@ -1,6 +1,12 @@
-<?php include("connect.php") ?>
-<?php //include('session.php'); ?>
+<?php @include ('connect.php'); ?>
+<?php session_start(); ?>
+<?php session_start();
+    if(!isset($_SESSION['username']))
+    {
+        header('location:login.php');
+    }
 
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,27 +21,38 @@
     
 
   </head>
+  
   <body>
     <div>
       <link href="CSS/landing-page1.css" rel="stylesheet">
 
-
       <div class="landing-page-container">
         <div class="landing-page-top-container">
           <nav data-role="Header" class="landing-page-navbar">
-            <a href = "index.html"> LawalStyle</a> 
+          <?php
+//this page will only allow users that are logged in
+if (isset($_SESSION['username'])) {
+	echo "Welcome ". $_SESSION['username'] . ".<br>";	
+}
+else {
+	echo "You can't view this page without logging in. <br>";
+	echo "<a href='login.php'>Log in</a> or <a href='register.php'>Register</a>";
+}
+?>
             <div class="landing-page-right-side">
               <div class="landing-page-links-container">
-               <a href = "index.php"><span class="landing-page-text">Home</span></a>
-               <a href = "about.php"> <span class="landing-page-text01">About</span></a>
-               <a href = "Contactus.php"><span class="landing-page-text02">Contact Us</span></a>
-                <a href = "#"><span class="landing-page-text03">Wireframe</span></a>
+               <a href = "explore.php"><span class="landing-page-text">Explore</span></a>
+               <!-- <a href = "about.php"> <span class="landing-page-text01">About</span></a> -->
+               <!-- <a href = "Contactus.php"><span class="landing-page-text02">Contact Us</span></a> -->
+               <a href = "members.php"><span class="landing-page-text03">Bookings</span></a>
+                <a href = "profile.php"><span class="landing-page-text03">Profile</span></a>
               </div>
               <a href="#main-section" class="landing-page-link">
-                <div class="solid-button-container">
+              <div class="solid-button-container">
                   <button class="solid-button-button button">
-                    <a href = "login.php"><span>Login</span></a>
-                  </button>
+                  
+                   <a href = "logout.php"><span>Logout</span></a>
+                  </button> 
                    
                 </div>
               </a>
@@ -71,8 +88,8 @@
                 <div class="landing-page-right-side1">
                   <div class="landing-page-links-container1">
                     <span class="landing-page-text04">Home</span>
-                    <span class="landing-page-text05">About</span>
-                    <span class="landing-page-text06">Wireframe</span>
+                    <span class="landing-page-text05">Booking</span>
+                    <span class="landing-page-text06">Profile</span>
                     <span>Contact</span>
                   </div>
                  
@@ -140,21 +157,21 @@
               </span>
               <div class="solid-button-container">
                 <button class="solid-button-button button">
-                <span><a href="explore.php">Explore Places</a></span>
+             
+                  <span><a href="#main-section">Explore Places</a></span>
                 </button>
               </div>
             </div>
           </div>
         </div>
         <div id="main-section" class="landing-page-main">
-          <h1>Most Famous Tourism Sites</h1>
-          <span class="landing-page-text15">Recommended</span>
+          <h2>Explore all our Tourism Center</h2>
+          <!-- <span class="landing-page-text15">Recommended</span> -->
           <div class="landing-page-cards-container">
-            
-      <?php
+          <?php
         //$excursion_id=$_GET['ExcursionID']; 
         //fetching result using select statement and limiting the result to show 6 rows to the user
-        $result_excursion = "SELECT * FROM Excursion LIMIT 6";
+        $result_excursion = "SELECT * FROM Excursion";
         $result = $conn->query($result_excursion);
 
         if ($result->num_rows > 0) {
@@ -182,7 +199,7 @@
                 </div>
                 <div class="outline-button-container">
                   <button class="outline-button-button button">
-                   Book place
+                   Discover place
                   </button>
                 </div>
               </div>
@@ -192,16 +209,16 @@
 
           }
           } else {
-            echo "0 results";
+            echo "<h3 class='book-color'>You have no booking, please keep exploring </h3>";
           }
           $conn->close();
 
           ?>
 
-
-
-<!-- 
-            <div class="place-card-container">
+           
+           
+           
+            <!-- <div class="place-card-container">
               <img
                 alt="image"
                 src="images/mountain.jpg"
@@ -302,6 +319,9 @@
               </div>
             </div> -->
           </div>
+        
+        
+        
         </div>
         <div class="landing-page-footer">
           <div class="landing-page-menu">
