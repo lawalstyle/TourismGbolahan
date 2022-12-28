@@ -194,7 +194,7 @@ else {
                 </span>
                 <div class="align-item">
                   <h5><?php echo $row['Location']?></h5>
-                  <h5>£<?php echo $row['Price']?></h5>
+                  <h5>£<?php echo $row['Price']?>/person</h5>
       
                 </div>
                 <div class="align-item">
