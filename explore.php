@@ -169,7 +169,7 @@ else {
           <!-- <span class="landing-page-text15">Recommended</span> -->
           <div class="landing-page-cards-container">
           <?php
-        //$excursion_id=$_GET['ExcursionID']; 
+        $excursion_id=$_GET['ExcursionID']; 
         //fetching result using select statement and limiting the result to show 6 rows to the user
         $result_excursion = "SELECT * FROM Excursion";
         $result = $conn->query($result_excursion);
@@ -199,7 +199,7 @@ else {
                 </div>
                 <div class="outline-button-container">
                   <button class="outline-button-button button">
-                   Discover place
+                  <a href="explore_view_more.php?ExcursionID=<?php echo $row["ExcursionID"];?>"> Discover place</a>
                   </button>
                 </div>
               </div>

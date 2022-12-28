@@ -1,5 +1,12 @@
 <?php @include ('connect.php'); ?>
 <?php session_start(); ?>
+<?php session_start();
+    if(!isset($_SESSION['username']))
+    {
+        header('location:login.php');
+    }
+
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -150,27 +157,27 @@ else {
               </span>
               <div class="solid-button-container">
                 <button class="solid-button-button button">
-                <span><a href="explore.php">Explore Places</a></span>
+             
+                  <span><a href="explore.php">Explore Places</a></span>
                 </button>
               </div>
             </div>
           </div>
         </div>
         <div id="main-section" class="landing-page-main">
-          <h1>Booked Tourism Center</h1>
+        <?php
+        $excursion_id=$_GET['ExcursionID']; 
+        //fetching result using select statement and limiting the result to show 6 rows to the user
+        $result_excursion = "SELECT * FROM Excursion WHERE ExcursionID='$excursion_id'";
+        $result = $conn->query($result_excursion);
+        $row = mysqli_fetch_assoc($result);
+        //var_dump($row);
+        $conn->close();
+          ?>
+          <h2>Explore more about <?php echo $row['ExcursionName'];?> </h2>
           <!-- <span class="landing-page-text15">Recommended</span> -->
           <div class="landing-page-cards-container">
-          <?php
-        //$excursion_id=$_GET['ExcursionID']; 
-        //fetching result using select statement and limiting the result to show 6 rows to the user
-        $result_excursion = "SELECT * FROM Booking";
-        $result = $conn->query($result_excursion);
-
-        if ($result->num_rows > 0) {
-          // output data of each row
-          while($row = $result->fetch_assoc()) {
-            
-          ?>
+        
 
             <div class="place-card-container">
               <img
@@ -188,24 +195,32 @@ else {
                 <div class="align-item">
                   <h5><?php echo $row['Location']?></h5>
                   <h5>£<?php echo $row['Price']?></h5>
+      
+                </div>
+                <div class="align-item">
+                  <h5>
+                
+
+                <select name="people"  id="dropdownlist">
+                <option value="">Select no of people</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+              </select>    
+                </h5>
+                  <!-- <h5>£<?php //echo $row['Price']?></h5> -->
+                  <h5 id="ourBooking"><?php echo($row['Price'] * 2) ?></h5>
+                  <h5 id="result">res</h5>
+      
                 </div>
                 <div class="outline-button-container">
                   <button class="outline-button-button button">
-                   Discover place
+                  <a href="members.php?ExcursionID=<?php echo $row["ExcursionID"];?>"> Book place</a>
                   </button>
                 </div>
               </div>
+              <p id="demo"></p>
             </div>
-
-            <?php 
-
-          }
-          } else {
-            echo "<h3 class='book-color'>You have no booking, please keep exploring </h3>";
-          }
-          $conn->close();
-
-          ?>
+      
 
            
            
@@ -465,4 +480,43 @@ else {
 
     }
   </style>
+
+<script>
+
+// let x= document.getElementById("dropdownlist").value;
+
+// console.log(x);
+
+// for(i=1; i<x.options.length;i++){
+
+//   //console.log(i);
+
+  
+// console.log(x.options[i].value);
+// //document.getElementById("demo").innerHTML = i;
+
+// }
+
+function computeBooking() {
+
+var mySelect = document.getElementById('dropdownlist');
+var ourBooking = document.getElementById('ourBooking');
+var res = document.getElementById('result');
+
+if (mySelect.value == "1")
+{
+    res.value = ourBooking.value * 100;
+}
+else if(mySelect.value=="2")
+{
+    res.value = ourBooking.value * 100;
+}
+else if(mySelect.value=="3")
+{
+    res.value = ourBooking.value * 100;
+}
+
+// and so on...
+}
+</script>
 </html>
