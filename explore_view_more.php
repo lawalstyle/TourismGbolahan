@@ -202,14 +202,14 @@ else {
                 
 
                 <select name="people"  id="dropdownlist">
-                <option value="">Select no of people</option>
-                <option value="1">1</option>
                 <option value="2">2</option>
+                <!-- <option value="1">1</option>
+                <option value="2">2</option> -->
               </select>    
                 </h5>
                   <!-- <h5>£<?php //echo $row['Price']?></h5> -->
-                  <h5 id="ourBooking"><?php echo($row['Price'] * 2) ?></h5>
-                  <h5 id="result">res</h5>
+                  <h5 id="ourBooking">£<?php echo($row['Price'] * 2) ?></h5>
+                  <!-- <h5 id="result">res</h5> -->
       
                 </div>
                 <div class="outline-button-container">
