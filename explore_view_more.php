@@ -208,7 +208,7 @@ else {
               </select>    
                 </h5>
                   <!-- <h5>£<?php //echo $row['Price']?></h5> -->
-                  <h5 id="ourBooking">£<?php echo($row['Price'] * 2) ?></h5>
+                  <h5 id="ourBooking">£<?php echo($row['Price'] * 2); ?></h5>
                   <!-- <h5 id="result">res</h5> -->
       
                 </div>
