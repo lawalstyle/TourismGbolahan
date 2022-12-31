@@ -204,7 +204,7 @@ else {
                 <select name="people"  id="dropdownlist">
                 <option value="2">2</option>
                 <!-- <option value="1">1</option>
-                <option value="2">2</option> -->
+                <option value="2">2</option> -->'
               </select>    
                 </h5>
                   <!-- <h5>£<?php //echo $row['Price']?></h5> -->
