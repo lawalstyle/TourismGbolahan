@@ -176,6 +176,7 @@ else {
           ?>
           <h2>Explore more about <?php echo $row['ExcursionName'];?> </h2>
           <!-- <span class="landing-page-text15">Recommended</span> -->
+          <form action="" method="post">
           <div class="landing-page-cards-container">
         
 
@@ -326,7 +327,7 @@ else {
               </div>
             </div> -->
           </div>
-        
+          </form>
         
         
         </div>
