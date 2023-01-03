@@ -342,7 +342,7 @@ else {
                   rel="noreferrer noopener"
                   class="landing-page-link05"
                 >
-                  Tour packagess
+                  Tour packages
                 </a>
                 <a
                   href="#"
