@@ -6,8 +6,8 @@ mysqli_query($conn,'SET NAMES utf8mb4');
 
 //grab the posted username and password
 $post_username = $_POST['Description'];
-$post_password = $_POST['Password'];
-$post_fullname = $_POST['Fullname'];
+$post_password = $_POST['location'];
+$post_fullname = $_POST['Price'];
 $post_email = $_POST['Email'];
 $post_dob = $_POST['DOB'];
 
