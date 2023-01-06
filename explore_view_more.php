@@ -178,8 +178,6 @@ else {
           <!-- <span class="landing-page-text15">Recommended</span> -->
           <form action="" method="post">
           <div class="landing-page-cards-container">
-        
-
             <div class="place-card-container">
               <img
                 alt="image"
