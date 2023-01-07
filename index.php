@@ -1,6 +1,7 @@
-<?php include("connect.php") ?>
-<?php //include('session.php'); ?>
-
+<?php @include ('connect.php'); ?>
+<?php session_start();
+  
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -151,10 +152,10 @@
           <span class="landing-page-text15">Recommended</span>
           <div class="landing-page-cards-container">
             
-      <?php
-        //$excursion_id=$_GET['ExcursionID']; 
+          <?php
+        $excursion_id=$_GET['ExcursionID']; 
         //fetching result using select statement and limiting the result to show 6 rows to the user
-        $result_excursion = "SELECT * FROM Excursion LIMIT 6";
+        $result_excursion = "SELECT * FROM Excursion";
         $result = $conn->query($result_excursion);
 
         if ($result->num_rows > 0) {
@@ -182,7 +183,7 @@
                 </div>
                 <div class="outline-button-container">
                   <button class="outline-button-button button">
-                   Book place
+                  <a href="explore_view_more.php?ExcursionID=<?php echo $row["ExcursionID"];?>"> Discover place</a>
                   </button>
                 </div>
               </div>
@@ -192,12 +193,11 @@
 
           }
           } else {
-            echo "0 results";
+            echo "<h3 class='book-color'>You have no booking, please keep exploring </h3>";
           }
           $conn->close();
 
           ?>
-
 
 
 <!-- 

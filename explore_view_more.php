@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" data-tag="font">
     <link rel="stylesheet" href="CSS/style.css" >
 
-    
+  
 
   </head>
   
-  <body>
+  <body style="background-color:#F8F8F8;">
     <div>
       <link href="CSS/landing-page1.css" rel="stylesheet">
 
@@ -177,6 +177,33 @@ else {
           <h2>Explore more about <?php echo $row['ExcursionName'];?> </h2>
           <!-- <span class="landing-page-text15">Recommended</span> -->
           <form action="" method="post">
+            <?php 
+         if (isset($_POST['submit'])){
+
+          $excursion_id=$_GET['ExcursionID']; 
+           $excursion_date = $_POST['Excursiondate'];
+           $people = $_POST['Number_of_People'];
+           $booking_cost = $_POST['Booking_Cost'];
+           $booking_note = $_POST['BookingNote'];
+
+           // Insert record
+           $sql = "INSERT INTO Booking (ExcursionID, Excursiondate, Number_of_People, Booking_Cost, BookingNote) VALUES ('$excursion_id', '$excursion_date', '$people', '$booking_cost', '$booking_note')";
+
+           if (mysqli_query($conn, $sql)) {
+               echo "Record created successfully";
+           } else {
+               echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+           }
+
+           // Close connection
+           mysqli_close($conn);
+
+          
+         }
+
+           
+
+?>
           <div class="landing-page-cards-container">
             <div class="place-card-container">
               <img
@@ -200,7 +227,7 @@ else {
                   <h5>
                 
 
-                <select name="people"  id="dropdownlist">
+                <select name="Number_of_People"  id="dropdownlist">
                 <option value="2">2</option>
                 <!-- <option value="1">1</option>
                 <option value="2">2</option> -->
@@ -208,13 +235,25 @@ else {
                 </h5>
                   <!-- <h5>£<?php //echo $row['Price']?></h5> -->
                   <h5 id="ourBooking">£<?php echo($row['Price'] * 2); ?></h5>
+                  <input name="Booking_Cost" hidden type="text" value="<?php echo($row['Price'] * 2); ?>">
                   <!-- <h5 id="result">res</h5> -->
       
                 </div>
+                Excursion Date
+                <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="date" id = "excursion_date" name = "Excursiondate">
+                </div> <br/>
+                <label for="booking_note">Booking Note</label>
+
+                <textarea id="booking_note" name="BookingNote" rows="4" cols="50">
+
+                </textarea><br/>
                 <div class="outline-button-container">
-                  <button class="outline-button-button button">
-                  <a href="members.php?ExcursionID=<?php echo $row["ExcursionID"];?>"> Book place</a>
-                  </button>
+                  <!-- <button class="outline-button-button button" name='submit'>
+                   Book place</a>
+                  </button> -->
+                  <input type="submit" name="submit" value="Save">
                 </div>
               </div>
               <p id="demo"></p>
@@ -460,7 +499,7 @@ else {
   </body>
   <style data-tag="reset-style-sheet">
     html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6 {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
-  </style>
+  </styl>
   <style data-tag="default-style-sheet">
     html {
       font-family: Poppins;
