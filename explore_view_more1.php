@@ -1,9 +1,6 @@
+<?php @include ('connect.php'); ?>
 <?php session_start(); ?>
-<?php include ('connect.php'); 
-
-?>
-
-<?php 
+<?php session_start();
     if(!isset($_SESSION['username']))
     {
         header('location:login.php');
@@ -165,7 +162,7 @@ else {
                 </button>
               </div>
             </div>
-          </div>/
+          </div>
         </div>
         <div id="main-section" class="landing-page-main">
         <?php
@@ -179,8 +176,11 @@ else {
           ?>
           <h2>Explore more about <?php echo $row['ExcursionName'];?> </h2>
           <!-- <span class="landing-page-text15">Recommended</span> -->
+         
+           
+          <form method="post">
+          <div class="landing-page-cards-container">
           <?php 
-          
          if (isset($_POST['save'])){
 
           $excursion_id=$_GET['ExcursionID']; 
@@ -200,18 +200,16 @@ else {
            }
 
            // Close connection
-           mysqli_close($conn);
+           //mysqli_close($conn);
 
         
 
           
          }
 
+           
+
 ?>
-     
-          <form method="post">
-          <div class="landing-page-cards-container">
-         
             <div class="place-card-container">
               <img
                 alt="image"
@@ -234,26 +232,16 @@ else {
                   <h5>
                 
 
-                Number of people: <select name="Number_of_People" id="dropdownlist">
-                <option value="1">1</option>
+                <select name="Number_of_People" id="dropdownlist">
                 <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-
                 <!-- <option value="1">1</option>
                 <option value="2">2</option> -->
               </select>    
                 </h5>
                   <!-- <h5>£<?php //echo $row['Price']?></h5> -->
-                 <!-- <h5 id="ourBooking">£<?php //echo($row['Price']); ?></h5> -->
+                  <h5 id="ourBooking">£<?php echo($row['Price'] * 2); ?></h5>
                   <input name="Booking_Cost" hidden type="text" value="<?php echo($row['Price'] * 2); ?>">
-                  <!-- <h5 id="result">res</h5>
+                  <!-- <h5 id="result">res</h5> -->
       
                 </div>
                 Excursion Date
@@ -270,7 +258,7 @@ else {
                   <!-- <button class="outline-button-button button" name='submit'>
                    Book place</a>
                   </button> -->
-                  <input type="submit" value='save' name="save" />
+                  <button type="submit" name="save">Add Booking</button>
                 </div>
               </div>
               <p id="demo"></p>
@@ -278,7 +266,7 @@ else {
 
           </div>
      
-        </form>
+          <form>
         
         
         </div>
@@ -468,7 +456,7 @@ else if(mySelect.value=="3")
     res.value = ourBooking.value * 100;
 }
 
-
+// and so on...
 }
 </script>
 </html>
