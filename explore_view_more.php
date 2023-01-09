@@ -165,7 +165,7 @@ else {
                 </button>
               </div>
             </div>
-          </div>/
+          </div>
         </div>
         <div id="main-section" class="landing-page-main">
         <?php
